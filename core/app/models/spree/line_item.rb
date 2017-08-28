@@ -16,9 +16,9 @@ module Spree
     before_validation :copy_price
     before_validation :copy_tax_category
 
-    validates :variant, presence: true
+    # validates :variant, presence: true
     validates :quantity, numericality: { only_integer: true, message: Spree.t('validation.must_be_int') }
-    validates :price, numericality: true
+    # validates :price, numericality: true
 
     validates_with Stock::AvailabilityValidator
     validate :ensure_proper_currency
@@ -26,10 +26,10 @@ module Spree
     before_destroy :update_inventory
     before_destroy :destroy_inventory_units
 
-    after_save :update_inventory
-    after_save :update_adjustments
+    # after_save :update_inventory
+    # after_save :update_adjustments
 
-    after_create :update_tax_charge
+    # after_create :update_tax_charge
 
     delegate :name, :description, :sku, :should_track_inventory?, :product, to: :variant
     delegate :tax_zone, to: :order
